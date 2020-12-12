@@ -1,0 +1,44 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+{% for listing in listing%}
+    <h2> {{ listing.name }} </h2>
+     <p> Price: {{ listing.price }} </p>
+    <p> Description: {{ listing.description }} </p>
+    <p> Highest Bid: {{ listing.highest_bid }} </p>
+    <img src="{{listing.picture}}" width="400" height="350">
+{% endfor %}
+{% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Add to Watchlist">
+    </form>
+{% endif %}
+{% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Place Bid">
+    </form>
+{% endif %}
+{% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form_close }}
+        <input type="submit" value="Close">
+    </form>
+{% endif %}
+{% if user.is_authenticated %}
+    <form method="POST">
+        {% csrf_token %}
+        {{ form_comment }}
+        <input type="submit" value="Comment">
+    </form>
+{% endif %}
+<h2> Comments: </h2>
+ {% for item in comments %}
+    <ul>
+        <li> {{ item.comment }} </li>
+    </ul>
+{% endfor %}
+{% endblock %}

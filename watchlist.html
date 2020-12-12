@@ -1,0 +1,15 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+   <h2> Watch List </h2>
+{% if user.is_authenticated %}
+   {% for item in items %}
+   <div>
+   <a href={{ item.item }}> {{ item.item }} </a> 
+   </div>
+   {% endfor %}
+{% else %}
+         Sign in to see watchlist
+{% endif %}
+
+{% endblock %}

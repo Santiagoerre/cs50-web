@@ -1,0 +1,10 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1> Add new lisitng:</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit">
+        </form>
+{% endblock %}
