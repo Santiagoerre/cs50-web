@@ -1,0 +1,13 @@
+{% extends "homework/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+   add new
+
+   <form method="POST">
+        {% csrf_token %}
+            {{ form }}
+        <input type="submit">
+    </form>
+{% endblock %}

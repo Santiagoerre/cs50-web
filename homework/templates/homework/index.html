@@ -1,0 +1,14 @@
+{% extends "homework/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+   {% for Post in homeworks%}
+   <div id="homework"> 
+    <h3> {{Post.title}} for {{Post.clas}}, due on: {{Post.due_date}} </h3> 
+    <h5>Link: {{Post.link}} </h5>
+    <button id="done" name="{{Post.id}}" > Mark Done </button>  <button name="{{Post.id}}" id="edit">  Edit </button>
+    </div> 
+
+    {% endfor %}
+{% endblock %}
